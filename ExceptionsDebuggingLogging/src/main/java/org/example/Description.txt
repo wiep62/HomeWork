@@ -55,3 +55,130 @@ logs/errors.log — заполняется информацией обо все�
 Тесты выполняются успешно.
 Логи пишутся корректно.
 В каждый лог-файл выводится только соответствующий тип информации.
+
+
+
+
+
+
+
+
+ackage practice;
+import java.util.ArrayList;
+
+import java.util.Scanner;
+import java.util.Set;
+
+public class Main {
+    public static void main(String[] args) {
+
+
+PhoneBook book  = new PhoneBook();
+
+       // Scanner input = new Scanner(System.in);
+/*while (true){
+    System.out.println("Введите номер: ");
+    String phone = input.nextLine();
+    System.out.println("Введите имя: ");
+    String name = input.nextLine();
+    book.addContact(phone,name);
+
+    System.out.println("Поиск контакта: ");
+    String name1 = input.nextLine();
+    System.out.println( book.getContactByPhone(name1));
+
+    if (input.equals("LIST")) {
+        for (String contacts : book.getAllContacts()) {
+            System.out.println(contacts);
+            }
+        continue;
+    }
+    }*/
+        String name;
+        String phone;
+        while (true) {
+            System.out.println("Введите номер, имя или команду:");
+            String input = new Scanner(System.in).nextLine();
+            Boolean haveName = false;
+            Boolean havePhone = false;
+        /**
+         *  инициализируем значением false две переменные типа Boolean,
+         *  которые будут отражать есть ли уже такой контакт или такое имя в
+         *  нашей телефонной книге:
+        * Boolean haveName = false;
+         * Boolean havePhone = false;
+         * и будем проверять данную информацию на каждой итерации цикла,
+         * сверяя введенные нами значение (input) с телефонной книгой phoneBookMap,
+         * которую заполняем
+         * */
+for (String keys : book.map.keySet()){
+    if (input.equals(keys)){
+        havePhone = true;
+    }
+}
+for (String keys : book.map.keySet()){
+    if (input.equals(book.map.get(keys))){
+        haveName = true;
+    }
+}
+
+/**
+ * Введено имя
+ *
+ * ✏ Мы уже реализовали методы по проверки на имя или номер телефона, в классе PhoneBook,
+ * воспользуемся этими методом: book.isName(input)
+ *
+ * ✏ Далее проверим, есть ли уже это имя в телефонной книге, для такой проверки мы создали
+ * переменную haveName, и есть ли есть вызываем метод реализованный в классе PhoneBook метод
+ * .getContactByName(), выводим требуемую информацию в консоль и прерываем итерацию цикла while
+ *
+ * ✏ Если такого имени нет, предложим ввести для нового контакта номер телефона, проверим этот
+ * телефон реализованным в классе PhoneBook методом .isPhone(), если все в порядке запишем новый
+ * контакт в наш Map PhoneBookMap используя реализованный метод класса PhoneBook .addContact()
+ * и прерываем итерацию цикла while
+ * */
+if (book.isNameBoolean(input)){
+    name = input;
+    if (haveName){
+        System.out.println(book.getContactByName(name));
+        continue;
+    }else {
+        System.out.println("Такого имени в телефонной книге нет.\n" +
+               "Введите номер телефона для абонента " + "\"" + name + "\":");
+      String phoneInput = new Scanner(System.in).nextLine();
+       if (book.isPhoneBoolean(phoneInput)) {
+            book.addContact(phoneInput, name);
+            System.out.println("Контакт сохранен!");
+            continue;
+    }
+}
+        }
+
+            if (book.isPhoneBoolean(input)){
+                phone = input;
+                if (havePhone){
+                    System.out.println(book.getContactByPhone(phone));
+                    continue;
+                }else {
+                    System.out.println("Такого номера в телефонной книге нет.\n" +
+                            "Введите имя абонента для номера " + "\"" + phone + "\":");
+                    String nameInput = new Scanner(System.in).nextLine();
+                    book.addContact(phone, nameInput);
+
+                    System.out.println("Контакт сохранен!");
+                        continue;
+
+                }
+            }
+
+            if (input.equals("LIST")) {
+                for (String contacts : book.getAllContacts()) {
+                    System.out.println(contacts);
+                    }
+                continue;
+            }
+
+            }
+        }}
+
+
