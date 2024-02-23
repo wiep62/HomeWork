@@ -29,9 +29,20 @@ public class CustomerList {
             catch (InputMismatchException e) {
                 System.out.println("Введеное значение не является Integer!");
             }
+            catch (InvalidInputException e){
+                if (name == null || input.isEmpty()) {
+                    throw new InvalidInputException("Input cannot be null or empty");
+                }
+            }
+
+        public static void validateInput(String input) throws InvalidInputException {
+            if (input == null || input.isEmpty()) {
+                throw new InvalidInputException("Input cannot be null or empty");
+            }
+        }
     }
 
-
+    https://habr.com/ru/articles/746218/
     public void rmCustomer(){
         System.out.println("Введите number удоляемого абонента : ");
         Integer number = new Scanner(System.in).nextInt();
