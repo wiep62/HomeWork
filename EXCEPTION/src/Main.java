@@ -1,6 +1,7 @@
 import java.util.Objects;
 import java.util.Scanner;
 import java.util.TreeMap;
+import java.util.logging.Logger;
 
 // Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
 // then press Enter. You can now see whitespace characters in your code.
@@ -12,12 +13,12 @@ public class Main {
 
     public static void main(String[] args) {
 
+
+
+
+
         CustomerList cust = new CustomerList();
-    //    Person person = new Person("dd", "ddd");
 
-      //  TreeMap<Integer, Person> map = new TreeMap<>();
-
-            String regex = "[^0-9]";
 
 
      while (true){
@@ -28,9 +29,16 @@ public class Main {
            if (input.equals("list")){
               cust.getList();
            }
-           if (input.equals("add")) {
-              cust.addCustomer();
+           try {
+               if (input.equals("add")) {
+                   cust.addCustomer();
+               }
+
            }
+           catch (MyException e){
+               System.out.println(e.getMessage());
+           }
+
 
            if (input.equals("delete")){
               cust.rmCustomer();
