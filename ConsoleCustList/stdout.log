@@ -1,0 +1,2 @@
+21:04:27.354 [main] INFO  org.example.CustomerList -  Add person 111111111
+21:04:37.884 [main] INFO  org.example.CustomerList -  getList()
